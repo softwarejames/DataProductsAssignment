@@ -28,7 +28,7 @@ $(function() {
 </script>
 
 ```{r, echo= FALSE, cache= TRUE, message= FALSE, comment= NA, warning= FALSE}
-library(shiny)
+library(slidify)
 library(caret)
 library(dplyr)
 options(dplyr.width = Inf, dplyr.print_max = 1000)
