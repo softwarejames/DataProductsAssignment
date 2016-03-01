@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Automobile MPG Estimate</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Automobile MPG Estimate">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Automobile MPG Estimate</h1>
+    <h2>Data Products Course Project</h2>
+    <p><br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <!-- Limit image width and height -->
+
+<style type="text/css">
+img {     
+  max-height: 560px;     
+  max-width: 964px; 
+}
+</style>
+ 
+
+<!-- Center image on slide -->
+
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+
+<script type="text/javascript">
+$(function() {     
+  $("p:has(img)").addClass('centered'); 
+});
+</script>
+
+<h2>Overview</h2>
+
+<ul>
+<li>The data was extracted from the 1974 Motor Trend US magazine comprised of 
+fuel consumption and 10 aspects of automobile design and performance for 32 automobiles 
+(1973–74 models).</li>
+<li>A linear regression model was built to estimate MPG using transmission 
+type, number of cylinders, and horsepower variables in this data set.</li>
+<li>A Shiny App was created that allows users to input transmission type, number of cylinders, and horsepower and receive an estimate of MPG based on this model.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>      Mpg        CylinderCount   Horsepower        TransType 
+ Min.   :10.40   4:11          Min.   : 52.0   automatic:19  
+ 1st Qu.:15.43   6: 7          1st Qu.: 96.5   manual   :13  
+ Median :19.20   8:14          Median :123.0                 
+ Mean   :20.09                 Mean   :146.7                 
+ 3rd Qu.:22.80                 3rd Qu.:180.0                 
+ Max.   :33.90                 Max.   :335.0                 
+</code></pre>
+
+<pre><code>&#39;data.frame&#39;:   32 obs. of  4 variables:
+ $ Mpg          : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+ $ CylinderCount: Factor w/ 3 levels &quot;4&quot;,&quot;6&quot;,&quot;8&quot;: 2 2 1 2 3 2 3 1 1 2 ...
+ $ Horsepower   : num  110 110 93 110 175 105 245 62 95 123 ...
+ $ TransType    : Factor w/ 2 levels &quot;automatic&quot;,&quot;manual&quot;: 2 2 2 1 1 1 1 1 1 1 ...
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Linear Regression Model</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">#train linear model
+trainlm1_model &lt;- train(Mpg ~ CylinderCount + Horsepower + TransType,
+                        data = train_data,
+                        method = &#39;lm&#39;
+)
+</code></pre>
+
+<pre><code>    (Intercept)  CylinderCount6  CylinderCount8      Horsepower 
+         27.296          -3.925          -3.533          -0.044 
+TransTypemanual 
+          4.158 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Shiny App</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/shiny_app_screenshot.png" alt="alt text"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Data'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Linear Regression Model'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Shiny App'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
